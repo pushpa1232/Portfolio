@@ -1,0 +1,474 @@
+/* ============================================
+   GLOBAL DESIGN SYSTEM - Eco Portfolio
+   ============================================ */
+
+/* Google Fonts Import */
+@import url('https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700&family=Nunito:wght@300;400;500;600;700&display=swap');
+
+/* ============================================
+   CSS VARIABLES - Earthy Color Palette
+   ============================================ */
+:root {
+  /* Primary Colors */
+  --primary-green: #2D5A27;
+  --secondary-green: #4A7C59;
+  --light-green: #8FBC8F;
+  --sage-green: #9CAF88;
+  
+  /* Earth Tones */
+  --brown: #8B4513;
+  --dark-brown: #3E2723;
+  --warm-brown: #A0522D;
+  --terracotta: #CD853F;
+  
+  /* Neutral Tones */
+  --beige: #F5F5DC;
+  --cream: #FAF0E6;
+  --linen: #FAF3E0;
+  --sand: #E8DCC4;
+  
+  /* Accent */
+  --accent-gold: #D4A574;
+  --leaf-highlight: #C8E6C9;
+  
+  /* Text Colors */
+  --text-dark: #2C3E2C;
+  --text-medium: #4A5D4A;
+  --text-light: #6B7B6B;
+  --text-cream: #FAF0E6;
+  
+  /* Shadows */
+  --shadow-soft: 0 4px 15px rgba(45, 90, 39, 0.1);
+  --shadow-medium: 0 8px 25px rgba(45, 90, 39, 0.15);
+  --shadow-strong: 0 12px 40px rgba(45, 90, 39, 0.2);
+  
+  /* Transitions */
+  --transition-fast: 0.2s ease;
+  --transition-medium: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  
+  /* Border Radius */
+  --radius-small: 4px;
+  --radius-medium: 8px;
+  --radius-large: 16px;
+  --radius-round: 50%;
+}
+
+/* ============================================
+   BASE RESET & TYPOGRAPHY
+   ============================================ */
+*, *::before, *::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  font-family: 'Nunito', sans-serif;
+  font-size: 16px;
+  line-height: 1.7;
+  color: var(--text-dark);
+  background-color: var(--cream);
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Background Texture - Subtle Paper */
+body::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    radial-gradient(ellipse at 20% 30%, rgba(143, 188, 143, 0.05) 0%, transparent 50%),
+    radial-gradient(ellipse at 80% 70%, rgba(212, 165, 116, 0.05) 0%, transparent 50%);
+  pointer-events: none;
+  z-index: -1;
+}
+
+/* Headings - Warm Serif */
+h1, h2, h3, h4, h5, h6 {
+  font-family: 'Playfair Display', serif;
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--primary-green);
+}
+
+h1 { font-size: 3.5rem; }
+h2 { font-size: 2.5rem; }
+h3 { font-size: 1.75rem; }
+h4 { font-size: 1.5rem; }
+h5 { font-size: 1.25rem; }
+h6 { font-size: 1rem; }
+
+p {
+  margin-bottom: 1rem;
+}
+
+a {
+  color: var(--secondary-green);
+  text-decoration: none;
+  transition: var(--transition-fast);
+}
+
+a:hover {
+  color: var(--primary-green);
+}
+
+
+/* ============================================
+   MAIN CONTENT CONTAINER
+   ============================================ */
+main {
+  padding-top: 80px;
+  min-height: calc(100vh - 80px);
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+/* ============================================
+   FOOTER - Bamboo Style
+   ============================================ */
+.footer {
+  background: linear-gradient(180deg, var(--cream) 0%, var(--sand) 100%);
+  padding: 3rem 2rem 1rem;
+  
+  position: relative;
+}
+
+.footer::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 4px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--secondary-green) 0px,
+    var(--secondary-green) 20px,
+    var(--light-green) 20px,
+    var(--light-green) 40px
+  );
+}
+
+.footer-content {
+  max-width: 1200px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 2rem;
+}
+
+.footer-section h4 {
+  font-family: 'Playfair Display', serif;
+  margin-bottom: 1rem;
+  color: var(--primary-green);
+}
+
+.footer-section p {
+  color: var(--text-light);
+  font-size: 0.9rem;
+}
+
+.footer-social {
+  display: flex;
+  gap: 1rem;
+  margin-top: 1rem;
+}
+
+.social-link {
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: var(--light-green);
+  border-radius: var(--radius-round);
+  color: var(--primary-green);
+  transition: var(--transition-fast);
+}
+
+.social-link:hover {
+  background: var(--secondary-green);
+  color: var(--cream);
+  transform: translateY(-3px);
+}
+
+.footer-bottom {
+  text-align: center;
+  padding-top: 2rem;
+  margin-top: 2rem;
+  border-top: 1px solid var(--sand);
+  color: var(--text-light);
+  font-size: 0.85rem;
+}
+
+/* ============================================
+   BUTTONS - Nature Inspired
+   ============================================ */
+.btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.875rem 1.75rem;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  border: none;
+  border-radius: var(--radius-medium);
+  cursor: pointer;
+  transition: var(--transition-medium);
+}
+
+.btn-primary {
+  background: linear-gradient(135deg, var(--secondary-green) 0%, var(--primary-green) 100%);
+  color: var(--cream);
+  box-shadow: var(--shadow-soft);
+}
+
+.btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+  color: var(--cream);
+}
+
+.btn-secondary {
+  background: transparent;
+  color: var(--primary-green);
+  border: 2px solid var(--secondary-green);
+}
+
+.btn-secondary:hover {
+  background: var(--secondary-green);
+  color: var(--cream);
+  transform: translateY(-2px);
+}
+
+/* Leaf button shape */
+.btn-leaf {
+  border-radius: 50px 50px 50px 5px;
+}
+
+/* ============================================
+   SECTION STYLES
+   ============================================ */
+.section {
+  padding: 4rem 0;
+}
+
+.section-title {
+  text-align: center;
+  margin-bottom: 3rem;
+}
+
+.section-title h2 {
+  display: inline-block;
+  position: relative;
+  padding-bottom: 1rem;
+}
+
+.section-title h2::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background: linear-gradient(90deg, var(--secondary-green), var(--light-green));
+  border-radius: 2px;
+}
+
+/* ============================================
+   DECORATIVE ELEMENTS
+   ============================================ */
+
+/* Leaf divider */
+.leaf-divider {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 2rem 0;
+}
+
+.leaf-divider span {
+  width: 30px;
+  height: 2px;
+  background: linear-gradient(90deg, var(--light-green), var(--secondary-green));
+  border-radius: 2px;
+}
+
+.leaf-divider svg {
+  width: 24px;
+  height: 24px;
+  fill: var(--secondary-green);
+}
+
+/* Vine border */
+.vine-border {
+  position: relative;
+  padding: 2rem;
+}
+
+.vine-border::before,
+.vine-border::after {
+  content: '🌿';
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.3;
+}
+
+.vine-border::before {
+  top: 0;
+  left: 0;
+}
+
+.vine-border::after {
+  bottom: 0;
+  right: 0;
+}
+
+/* Eco icon set */
+.eco-icon {
+  width: 24px;
+  height: 24px;
+  fill: var(--secondary-green);
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  h1 { font-size: 2.5rem; }
+  h2 { font-size: 2rem; }
+  h3 { font-size: 1.5rem; }
+  
+  .nav-menu {
+    position: fixed;
+    top: 70px;
+    left: -100%;
+    width: 100%;
+    height: calc(100vh - 70px);
+    background: var(--cream);
+    flex-direction: column;
+    justify-content: flex-start;
+    padding-top: 2rem;
+    transition: var(--transition-medium);
+  }
+  
+  .nav-menu.active {
+    left: 0;
+  }
+  
+  .nav-toggle {
+    display: flex;
+  }
+  
+  .page-header {
+    padding: 3rem 1rem 1rem;
+  }
+  
+  .page-title {
+    font-size: 2rem;
+  }
+  
+  .container {
+    padding: 0 1rem;
+  }
+}
+
+@media (max-width: 480px) {
+  h1 { font-size: 2rem; }
+  h2 { font-size: 1.75rem; }
+  
+  .btn {
+    padding: 0.75rem 1.25rem;
+    font-size: 0.9rem;
+  }
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes slideInLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    opacity: 0;
+    transform: translateX(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+@keyframes pulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+}
+
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+@keyframes sway {
+  0%, 100% { transform: rotate(-2deg); }
+  50% { transform: rotate(2deg); }
+}
+
+/* Utility classes */
+.fade-in-up {
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease forwards;
+}
+
+.float {
+  animation: float 3s ease-in-out infinite;
+}
+
+.sway {
+  animation: sway 4s ease-in-out infinite;
+}
+

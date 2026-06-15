@@ -1,0 +1,1310 @@
+/* ============================================
+   PROJECTS PAGE STYLES - Eco Portfolio
+   Enhanced with Water Ripples, Parallax & Animations
+   ============================================ */
+
+/* ============================================
+   PROJECTS PAGE HEADER
+   ============================================ */
+.page-header {
+  text-align: center;
+  padding: 5rem 2rem 3rem;
+  position: relative;
+  /* Soft gradient background - light beige to leafy green */
+  background: linear-gradient(
+    180deg,
+    #F5F5DC 0%,    /* Beige */
+    #E8F5E9 40%,   /* Light mint green */
+    #C8E6C9 100%   /* Soft leafy green */
+  );
+  overflow: hidden;
+}
+
+/* Subtle paper texture overlay */
+.page-header::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 3px,
+      rgba(139, 69, 19, 0.015) 3px,
+      rgba(139, 69, 19, 0.015) 6px
+    );
+  pointer-events: none;
+}
+
+/* Header title styling */
+.page-header .page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3.5rem;
+  font-weight: 700;
+  color: #2D5A27;
+  margin-bottom: 0.5rem;
+  position: relative;
+  display: inline-block;
+}
+
+/* Vine underline for title */
+.page-header .page-title::after {
+  content: '';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    transparent 0%,
+    #4A7C59 20%,
+    #8FBC8F 50%,
+    #4A7C59 80%,
+    transparent 100%
+  );
+  border-radius: 2px;
+}
+
+/* Animated leaf icon beside title */
+.page-header .title-leaf {
+  display: inline-block;
+  margin-left: 0.5rem;
+  font-size: 2rem;
+  animation: leafFloat 3s ease-in-out infinite;
+  vertical-align: middle;
+}
+
+@keyframes leafFloat {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+  }
+  25% {
+    transform: translateY(-5px) rotate(5deg);
+  }
+  50% {
+    transform: translateY(-3px) rotate(-3deg);
+  }
+  75% {
+    transform: translateY(-6px) rotate(3deg);
+  }
+}
+
+/* Subtitle styling */
+.page-header .page-subtitle {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.15rem;
+  color: #4A5D4A;
+  max-width: 600px;
+  margin: 1.5rem auto 0;
+  line-height: 1.6;
+}
+
+/* Decorative leaves around header */
+.header-decoration {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.header-decoration .deco-leaf {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.4;
+  animation: leafDrift 8s ease-in-out infinite;
+}
+
+.header-decoration .deco-leaf:nth-child(1) {
+  top: 15%;
+  left: 10%;
+  animation-delay: 0s;
+}
+
+.header-decoration .deco-leaf:nth-child(2) {
+  top: 25%;
+  right: 12%;
+  animation-delay: 2s;
+}
+
+.header-decoration .deco-leaf:nth-child(3) {
+  bottom: 20%;
+  left: 15%;
+  animation-delay: 4s;
+}
+
+@keyframes leafDrift {
+  0%, 100% {
+    transform: translateY(0) rotate(0deg);
+    opacity: 0.3;
+  }
+  50% {
+    transform: translateY(-15px) rotate(10deg);
+    opacity: 0.5;
+  }
+}
+
+/* Responsive header */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 4rem 1.5rem 2rem;
+  }
+  
+  .page-header .page-title {
+    font-size: 2.5rem;
+  }
+  
+  .page-header .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .header-decoration .deco-leaf {
+    display: none;
+  }
+}
+.projects-filter {
+  padding: 2rem 0;
+  /* Soft gradient background - beige to leafy green */
+  background: linear-gradient(
+    180deg,
+    #F5F5DC 0%,    /* Beige */
+    #E8F5E9 50%,   /* Light mint green */
+    #C8E6C9 100%   /* Soft leafy green */
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Subtle recycled paper texture overlay */
+.projects-filter::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 69, 19, 0.02) 2px,
+      rgba(139, 69, 19, 0.02) 4px
+    ),
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 2px,
+      rgba(139, 69, 19, 0.015) 2px,
+      rgba(139, 69, 19, 0.015) 4px
+    );
+  pointer-events: none;
+}
+
+/* Water Ripple Effects Layer */
+.water-ripples {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(143, 188, 143, 0.3);
+  animation: rippleExpand 6s ease-out infinite;
+}
+
+.ripple:nth-child(1) {
+  width: 100px;
+  height: 100px;
+  left: 15%;
+  top: 20%;
+  animation-delay: 0s;
+}
+
+.ripple:nth-child(2) {
+  width: 150px;
+  height: 150px;
+  left: 75%;
+  top: 60%;
+  animation-delay: 2s;
+}
+
+.ripple:nth-child(3) {
+  width: 80px;
+  height: 80px;
+  left: 45%;
+  top: 80%;
+  animation-delay: 4s;
+}
+
+.ripple:nth-child(4) {
+  width: 120px;
+  height: 120px;
+  left: 85%;
+  top: 25%;
+  animation-delay: 1s;
+}
+
+@keyframes rippleExpand {
+  0% {
+    transform: scale(0);
+    opacity: 0.6;
+  }
+  100% {
+    transform: scale(4);
+    opacity: 0;
+  }
+}
+
+/* Parallax Eco Layers */
+.parallax-container {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+/* Clouds Layer */
+.parallax-clouds {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.cloud {
+  position: absolute;
+  background: rgba(255, 255, 255, 0.6);
+  border-radius: 50px;
+  filter: blur(2px);
+}
+
+.cloud::before, .cloud::after {
+  content: '';
+  position: absolute;
+  background: inherit;
+  border-radius: 50%;
+}
+
+.cloud-1 {
+  width: 100px;
+  height: 40px;
+  top: 10%;
+  left: 10%;
+  animation: cloudDrift 25s linear infinite;
+}
+
+.cloud-1::before {
+  width: 50px;
+  height: 50px;
+  top: -25px;
+  left: 15px;
+}
+
+.cloud-1::after {
+  width: 35px;
+  height: 35px;
+  top: -15px;
+  left: 50px;
+}
+
+.cloud-2 {
+  width: 80px;
+  height: 30px;
+  top: 25%;
+  right: 15%;
+  animation: cloudDrift 30s linear infinite reverse;
+  animation-delay: -5s;
+}
+
+.cloud-2::before {
+  width: 40px;
+  height: 40px;
+  top: -20px;
+  left: 10px;
+}
+
+.cloud-2::after {
+  width: 25px;
+  height: 25px;
+  top: -10px;
+  left: 35px;
+}
+
+@keyframes cloudDrift {
+  0% { transform: translateX(0); }
+  50% { transform: translateX(30px); }
+  100% { transform: translateX(0); }
+}
+
+/* Hills/Mountains Layer */
+.parallax-hills {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  height: 150px;
+}
+
+.hill {
+  position: absolute;
+  bottom: 0;
+  border-radius: 50% 50% 0 0;
+}
+
+.hill-1 {
+  left: -10%;
+  width: 40%;
+  height: 80px;
+  background: linear-gradient(180deg, rgba(143, 188, 143, 0.2) 0%, transparent 100%);
+  animation: hillSway 12s ease-in-out infinite;
+}
+
+.hill-2 {
+  left: 20%;
+  width: 50%;
+  height: 120px;
+  background: linear-gradient(180deg, rgba(76, 175, 80, 0.15) 0%, transparent 100%);
+  animation: hillSway 15s ease-in-out infinite reverse;
+}
+
+.hill-3 {
+  right: -10%;
+  width: 45%;
+  height: 100px;
+  background: linear-gradient(180deg, rgba(45, 90, 39, 0.1) 0%, transparent 100%);
+  animation: hillSway 18s ease-in-out infinite;
+}
+
+@keyframes hillSway {
+  0%, 100% { transform: translateX(0) scaleY(1); }
+  50% { transform: translateX(10px) scaleY(1.02); }
+}
+
+/* Vines Layer */
+.parallax-vines {
+  position: absolute;
+  top: 0;
+  width: 100%;
+  height: 100%;
+}
+
+.vine {
+  position: absolute;
+  width: 3px;
+  background: linear-gradient(180deg, #4A7C59, #8FBC8F);
+  border-radius: 2px;
+  opacity: 0.3;
+}
+
+.vine-1 {
+  left: 5%;
+  height: 60%;
+  top: 10%;
+  animation: vineGrow 20s linear infinite;
+}
+
+.vine-1::before {
+  content: '🌿';
+  position: absolute;
+  top: 10%;
+  left: -8px;
+  font-size: 1rem;
+  animation: leafSway 3s ease-in-out infinite;
+}
+
+.vine-1::after {
+  content: '🌿';
+  position: absolute;
+  top: 30%;
+  left: 8px;
+  font-size: 0.8rem;
+  animation: leafSway 3s ease-in-out infinite reverse;
+}
+
+.vine-2 {
+  right: 8%;
+  height: 50%;
+  top: 20%;
+  animation: vineGrow 25s linear infinite reverse;
+}
+
+.vine-2::before {
+  content: '🍃';
+  position: absolute;
+  top: 15%;
+  right: -8px;
+  font-size: 1rem;
+  animation: leafSway 3s ease-in-out infinite reverse;
+}
+
+@keyframes vineGrow {
+  0%, 100% { height: 50%; }
+  50% { height: 60%; }
+}
+
+@keyframes leafSway {
+  0%, 100% { transform: rotate(-5deg); }
+  50% { transform: rotate(5deg); }
+}
+
+/* Floating Particles (Pollen/Spores) */
+.floating-particles {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+}
+
+.particle {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  background: rgba(255, 223, 186, 0.6);
+  border-radius: 50%;
+  animation: floatParticle 15s ease-in-out infinite;
+}
+
+.particle:nth-child(1) { left: 20%; animation-delay: 0s; }
+.particle:nth-child(2) { left: 40%; animation-delay: 3s; }
+.particle:nth-child(3) { left: 60%; animation-delay: 6s; }
+.particle:nth-child(4) { left: 80%; animation-delay: 9s; }
+.particle:nth-child(5) { left: 10%; animation-delay: 12s; }
+
+@keyframes floatParticle {
+  0%, 100% {
+    transform: translateY(0) translateX(0);
+    opacity: 0;
+  }
+  10% { opacity: 0.6; }
+  50% {
+    transform: translateY(-100px) translateX(30px);
+    opacity: 0.4;
+  }
+  90% { opacity: 0.6; }
+}
+
+.filter-buttons {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  flex-wrap: wrap;
+  position: relative;
+  z-index: 10;
+}
+
+/* Eco-themed filter buttons with sliding vine underline */
+.filter-btn {
+  position: relative;
+  padding: 0.75rem 1.5rem;
+  background: transparent;
+  border: none;
+  font-family: 'Nunito', sans-serif;
+  font-weight: 600;
+  font-size: 0.95rem;
+  color: #4A5D4A;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  overflow: hidden;
+}
+
+/* Sliding vine underline */
+.filter-btn::before {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: -100%;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(
+    90deg,
+    #2D5A27 0%,
+    #4A7C59 50%,
+    #8FBC8F 100%
+  );
+  border-radius: 2px;
+  transition: left 0.4s ease;
+}
+
+/* Glowing effect on hover */
+.filter-btn::after {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(76, 175, 80, 0.15);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.filter-btn:hover::before {
+  left: 0;
+}
+
+.filter-btn:hover::after {
+  width: 120%;
+  height: 120%;
+}
+
+.filter-btn:hover {
+  color: #2D5A27;
+  text-shadow: 0 0 10px rgba(76, 175, 80, 0.3);
+}
+
+/* Active filter button - glowing green highlight */
+.filter-btn.active {
+  color: #2D5A27;
+  font-weight: 700;
+}
+
+.filter-btn.active::before {
+  left: 0;
+  animation: vineSlide 2s ease-in-out infinite;
+}
+
+@keyframes vineSlide {
+  0%, 100% {
+    background: linear-gradient(90deg, #2D5A27, #4A7C59, #8FBC8F);
+  }
+  50% {
+    background: linear-gradient(90deg, #4A7C59, #8FBC8F, #4A7C59);
+  }
+}
+
+/* ============================================
+   PROJECTS GRID SECTION
+   ============================================ */
+.projects-section {
+  padding: 4rem 0;
+  /* Soft gradient background with subtle eco textures */
+  background: linear-gradient(
+    180deg,
+    #E8F5E9 0%,    /* Light mint green */
+    #F1F8E9 30%,   /* Soft green-beige */
+    #FFF8E7 60%,   /* Warm beige */
+    #E3F2FD 100%   /* Sky blue tint */
+  );
+  position: relative;
+  overflow: hidden;
+}
+
+/* Bamboo pattern overlay */
+.projects-section::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    /* Bamboo vertical lines */
+    repeating-linear-gradient(
+      90deg,
+      transparent,
+      transparent 80px,
+      rgba(139, 90, 43, 0.03) 80px,
+      rgba(139, 90, 43, 0.03) 82px
+    ),
+    /* Recycled paper texture */
+    repeating-linear-gradient(
+      0deg,
+      transparent,
+      transparent 40px,
+      rgba(139, 69, 19, 0.02) 40px,
+      rgba(139, 69, 19, 0.02) 41px
+    );
+  pointer-events: none;
+}
+
+/* Water Ripples for Projects Section */
+.projects-section .water-ripples {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.projects-section .ripple {
+  position: absolute;
+  border-radius: 50%;
+  border: 2px solid rgba(143, 188, 143, 0.25);
+  animation: rippleExpand 8s ease-out infinite;
+}
+
+.projects-section .ripple:nth-child(1) {
+  width: 80px;
+  height: 80px;
+  left: 10%;
+  top: 30%;
+  animation-delay: 0s;
+}
+
+.projects-section .ripple:nth-child(2) {
+  width: 120px;
+  height: 120px;
+  left: 70%;
+  top: 50%;
+  animation-delay: 3s;
+}
+
+.projects-section .ripple:nth-child(3) {
+  width: 60px;
+  height: 60px;
+  left: 40%;
+  top: 70%;
+  animation-delay: 5s;
+}
+
+/* Falling leaves animation */
+.falling-leaves {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.falling-leaf {
+  position: absolute;
+  font-size: 1.5rem;
+  opacity: 0.3;
+  animation: fallLeaf 15s linear infinite;
+}
+
+.falling-leaf:nth-child(1) {
+  left: 10%;
+  animation-delay: 0s;
+  animation-duration: 12s;
+}
+
+.falling-leaf:nth-child(2) {
+  left: 30%;
+  animation-delay: 3s;
+  animation-duration: 15s;
+}
+
+.falling-leaf:nth-child(3) {
+  left: 50%;
+  animation-delay: 6s;
+  animation-duration: 14s;
+}
+
+.falling-leaf:nth-child(4) {
+  left: 70%;
+  animation-delay: 2s;
+  animation-duration: 16s;
+}
+
+.falling-leaf:nth-child(5) {
+  left: 90%;
+  animation-delay: 8s;
+  animation-duration: 13s;
+}
+
+@keyframes fallLeaf {
+  0% {
+    top: -10%;
+    transform: rotate(0deg) translateX(0);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.3;
+  }
+  90% {
+    opacity: 0.3;
+  }
+  100% {
+    top: 110%;
+    transform: rotate(360deg) translateX(50px);
+    opacity: 0;
+  }
+}
+
+/* Parallax eco layers */
+.parallax-layer {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  top: 0;
+  left: 0;
+  pointer-events: none;
+}
+
+.parallax-layer-1 {
+  background: radial-gradient(circle at 20% 30%, rgba(76, 175, 80, 0.08) 0%, transparent 40%);
+  animation: parallaxFloat 8s ease-in-out infinite;
+}
+
+.parallax-layer-2 {
+  background: radial-gradient(circle at 80% 70%, rgba(135, 206, 235, 0.06) 0%, transparent 40%);
+  animation: parallaxFloat 10s ease-in-out infinite reverse;
+}
+
+@keyframes parallaxFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-20px);
+  }
+}
+
+.projects-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 2.5rem;
+  position: relative;
+  z-index: 1;
+}
+
+/* ============================================
+   PROJECT CARD - Glassmorphism with Eco Motifs
+   ============================================ */
+.project-card {
+  position: relative;
+  animation: fadeInUp 0.6s ease forwards;
+  opacity: 0;
+}
+
+.project-card:nth-child(1) { animation-delay: 0.1s; }
+.project-card:nth-child(2) { animation-delay: 0.2s; }
+.project-card:nth-child(3) { animation-delay: 0.3s; }
+.project-card:nth-child(4) { animation-delay: 0.4s; }
+.project-card:nth-child(5) { animation-delay: 0.5s; }
+.project-card:nth-child(6) { animation-delay: 0.6s; }
+
+/* Glassmorphism card base */
+.card-packaging {
+  position: relative;
+  width: 100%;
+  min-height: 380px;
+  height: 100%;
+  background: rgba(255, 255, 255, 0.65);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 20px;
+  padding: 1.5rem;
+  transition: all 0.4s ease;
+  overflow: hidden;
+  /* Subtle vine/leaf border */
+  border: 2px solid rgba(143, 188, 143, 0.3);
+  box-shadow: 
+    0 4px 20px rgba(45, 90, 39, 0.08),
+    0 1px 3px rgba(45, 90, 39, 0.05);
+  display: flex;
+  flex-direction: column;
+}
+
+/* Package front - flex container for content alignment */
+.package-front {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  height: 100%;
+}
+
+/* Vine border decoration */
+.card-packaging::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: 
+    /* Corner vines */
+    linear-gradient(135deg, rgba(76, 175, 80, 0.2) 0%, transparent 30%) no-repeat,
+    linear-gradient(225deg, rgba(76, 175, 80, 0.2) 0%, transparent 30%) no-repeat,
+    linear-gradient(315deg, rgba(76, 175, 80, 0.2) 0%, transparent 30%) no-repeat,
+    linear-gradient(45deg, rgba(76, 175, 80, 0.2) 0%, transparent 30%) no-repeat;
+  background-size: 60px 60px;
+  background-position: top left, top right, bottom right, bottom left;
+  pointer-events: none;
+  border-radius: 20px;
+}
+
+/* Glassmorphism shine effect */
+.card-packaging::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.3),
+    transparent
+  );
+  transition: left 0.6s ease;
+}
+
+.project-card:hover .card-packaging::after {
+  left: 100%;
+}
+
+/* Hover effects - leaf bloom / eco icon appears */
+.card-packaging:hover {
+  transform: translateY(-8px);
+  box-shadow: 
+    0 15px 40px rgba(76, 175, 80, 0.2),
+    0 0 30px rgba(135, 206, 235, 0.15),
+    0 0 60px rgba(76, 175, 80, 0.1);
+  border-color: rgba(76, 175, 80, 0.5);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+/* ============================================
+   BLOOMING LEAF EFFECT ON HOVER
+   ============================================ */
+
+/* Multiple blooming leaves on hover */
+.package-leaf {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0;
+  transform: scale(0) rotate(0deg);
+  transition: all 0.5s cubic-bezier(0.34, 1.56, 0.64, 1);
+  z-index: 10;
+  pointer-events: none;
+}
+
+.project-card:hover .package-leaf-1 {
+  opacity: 1;
+  transform: scale(1) rotate(-15deg);
+  top: -15px;
+  right: -10px;
+  animation: leafBloom 0.6s ease forwards;
+}
+
+.project-card:hover .package-leaf-2 {
+  opacity: 1;
+  transform: scale(0.8) rotate(20deg);
+  top: -5px;
+  left: -15px;
+  animation: leafBloom 0.6s ease 0.1s forwards;
+}
+
+.project-card:hover .package-leaf-3 {
+  opacity: 1;
+  transform: scale(0.6) rotate(-30deg);
+  bottom: 10px;
+  right: -20px;
+  animation: leafBloom 0.6s ease 0.2s forwards;
+}
+
+@keyframes leafBloom {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  50% {
+    transform: scale(1.2) rotate(10deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(var(--rotation, 0deg));
+  }
+}
+
+.package-leaf-1 {
+  --rotation: -15deg;
+}
+
+.package-leaf-2 {
+  --rotation: 20deg;
+}
+
+.package-leaf-3 {
+  --rotation: -30deg;
+}
+
+/* Eco icon that appears on hover */
+.eco-icon-overlay {
+  position: absolute;
+  bottom: 15px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  background: linear-gradient(135deg, #4A7C59, #2D5A27);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 0;
+  transform: translateY(20px) scale(0.5);
+  transition: all 0.4s ease;
+}
+
+.project-card:hover .eco-icon-overlay {
+  opacity: 1;
+  transform: translateY(0) scale(1);
+}
+
+.eco-icon-overlay span {
+  font-size: 1.2rem;
+}
+
+/* ============================================
+   ENHANCED CATEGORY BADGES WITH ANIMATIONS
+   ============================================ */
+
+/* Badge base styling */
+.package-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  padding: 0.35rem 0.85rem;
+  background: linear-gradient(135deg, rgba(45, 90, 39, 0.1), rgba(74, 124, 89, 0.15));
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  color: #2D5A27;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 20px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Badge icon animation */
+.package-badge .badge-icon {
+  font-size: 0.9rem;
+  transition: transform 0.3s ease;
+}
+
+/* Hover effects - badge grows and changes */
+.project-card:hover .package-badge {
+  background: linear-gradient(135deg, #4A7C59, #2D5A27);
+  color: #FAF0E6;
+  transform: scale(1.05);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.3);
+}
+
+/* Badge icon bounce on hover */
+.project-card:hover .package-badge .badge-icon {
+  animation: badgeBounce 0.5s ease;
+}
+
+@keyframes badgeBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.3); }
+}
+
+/* Badge glow effect */
+.package-badge::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.project-card:hover .package-badge::before {
+  width: 150%;
+  height: 150%;
+}
+
+/* Package icon */
+.package-icon {
+  width: 70px;
+  height: 70px;
+  margin: 0.5rem auto 1rem;
+  background: linear-gradient(135deg, rgba(143, 188, 143, 0.3), rgba(200, 230, 201, 0.5));
+  border-radius: 16px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border: 2px solid rgba(143, 188, 143, 0.4);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .package-icon {
+  transform: scale(1.1) rotate(5deg);
+  background: linear-gradient(135deg, rgba(143, 188, 143, 0.5), rgba(200, 230, 201, 0.7));
+  box-shadow: 0 8px 25px rgba(76, 175, 80, 0.2);
+}
+
+.package-icon svg {
+  width: 35px;
+  height: 35px;
+  stroke: #2D5A27;
+}
+
+/* Project title */
+.package-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.35rem;
+  color: #2D5A27;
+  text-align: center;
+  margin-bottom: 0.5rem;
+}
+
+/* Project description */
+.package-desc {
+  color: #4A5D4A;
+  font-size: 0.9rem;
+  text-align: center;
+  line-height: 1.6;
+  margin-bottom: 1rem;
+}
+
+/* Tech tags */
+.package-footer {
+  display: flex;
+  justify-content: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+  margin-top: auto;
+}
+
+.tech-tag {
+  padding: 0.25rem 0.75rem;
+  background: rgba(232, 245, 233, 0.8);
+  color: #4A5D4A;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border-radius: 15px;
+  border: 1px solid rgba(143, 188, 143, 0.3);
+  transition: all 0.3s ease;
+}
+
+.project-card:hover .tech-tag {
+  background: rgba(76, 175, 80, 0.15);
+  color: #2D5A27;
+  border-color: rgba(76, 175, 80, 0.4);
+}
+
+/* ============================================
+   SCROLL-TRIGGERED ANIMATIONS
+   ============================================ */
+
+/* Intersection Observer triggered state */
+.project-card.scroll-triggered {
+  animation: scrollFadeIn 0.6s ease forwards;
+}
+
+@keyframes scrollFadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Staggered delays for scroll-triggered cards */
+.project-card.scroll-triggered:nth-child(1) { animation-delay: 0.1s; }
+.project-card.scroll-triggered:nth-child(2) { animation-delay: 0.15s; }
+.project-card.scroll-triggered:nth-child(3) { animation-delay: 0.2s; }
+.project-card.scroll-triggered:nth-child(4) { animation-delay: 0.25s; }
+.project-card.scroll-triggered:nth-child(5) { animation-delay: 0.3s; }
+.project-card.scroll-triggered:nth-child(6) { animation-delay: 0.35s; }
+
+/* Hidden state for filtering */
+.project-card.hidden {
+  display: none;
+}
+
+/* Show state for filtering */
+.project-card.show {
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+/* ============================================
+   RESPONSIVE - PROJECTS PAGE
+   ============================================ */
+@media (max-width: 992px) {
+  .projects-grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: 2rem;
+  }
+  
+  .card-packaging {
+    min-height: 300px;
+  }
+  
+  /* Reduce parallax on tablet */
+  .parallax-hills {
+    display: none;
+  }
+}
+
+@media (max-width: 576px) {
+  .projects-grid {
+    grid-template-columns: 1fr;
+    max-width: 350px;
+    margin: 0 auto;
+  }
+  
+  .filter-buttons {
+    gap: 0.75rem;
+  }
+  
+  .filter-btn {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+  
+/* Hide complex parallax on mobile */
+  .parallax-clouds,
+  .parallax-vines {
+    display: none;
+  }
+}
+
+/* ============================================
+   PROJECT LINKS BUTTONS
+   ============================================ */
+.project-links {
+  display: flex;
+  justify-content: center;
+  gap: 1rem;
+  margin-top: 1rem;
+  flex-wrap: wrap;
+}
+
+.project-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1rem;
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  text-decoration: none;
+  border-radius: 8px;
+  transition: all 0.3s ease;
+  border: none;
+  cursor: pointer;
+}
+
+/* View Source Button - GitHub style */
+.project-btn.view-source {
+  background: linear-gradient(135deg, #2D5A27 0%, #4A7C59 100%);
+  color: #FAF0E6;
+  border: 1px solid rgba(143, 188, 143, 0.3);
+  box-shadow: 0 2px 8px rgba(45, 90, 39, 0.2);
+}
+
+.project-btn.view-source:hover {
+  background: linear-gradient(135deg, #4A7C59 0%, #2D5A27 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(76, 175, 80, 0.4), 
+              0 0 20px rgba(143, 188, 143, 0.3);
+}
+
+/* Live Demo Button - Green glowing style */
+.project-btn.live-demo {
+  background: linear-gradient(135deg, #228B22 0%, #32CD32 100%);
+  color: #FFFFFF;
+  border: 1px solid rgba(144, 238, 144, 0.4);
+  box-shadow: 0 2px 8px rgba(34, 139, 34, 0.2);
+}
+
+.project-btn.live-demo:hover {
+  background: linear-gradient(135deg, #32CD32 0%, #228B22 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(50, 205, 50, 0.5), 
+              0 0 25px rgba(144, 238, 144, 0.4);
+}
+
+/* Button icons */
+.project-btn svg {
+  flex-shrink: 0;
+}
+
+.project-btn.view-source:hover svg {
+  animation: githubBounce 0.5s ease;
+}
+
+.project-btn.live-demo:hover svg {
+  animation: linkPulse 0.5s ease;
+}
+
+@keyframes githubBounce {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.2); }
+}
+
+@keyframes linkPulse {
+  0%, 100% { transform: scale(1); }
+  50% { transform: scale(1.15); }
+}
+
+/* Glow effect animation for Live Demo */
+.project-btn.live-demo::before {
+  content: '';
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 0;
+  height: 0;
+  background: rgba(255, 255, 255, 0.2);
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  transition: width 0.4s ease, height 0.4s ease;
+}
+
+.project-btn.live-demo:hover::before {
+  width: 150%;
+  height: 150%;
+}
+
+/* Responsive button adjustments */
+@media (max-width: 576px) {
+  .project-links {
+    flex-direction: column;
+    align-items: stretch;
+  }
+  
+  .project-btn {
+    justify-content: center;
+    padding: 0.6rem 1rem;
+    font-size: 0.8rem;
+  }
+}
+
+@media (min-width: 577px) and (max-width: 992px) {
+  .project-btn {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.8rem;
+  }
+  
+  .project-btn svg {
+    width: 14px;
+    height: 14px;
+  }
+}
+

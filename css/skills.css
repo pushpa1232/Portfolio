@@ -1,0 +1,579 @@
+/* ============================================
+   ECO-THEMED SKILLS PAGE - Redesigned
+   ============================================ */
+
+/* ============================================
+   PAGE BACKGROUND - Beige to Leafy Green
+   ============================================ */
+body.skills-page {
+  background: linear-gradient(
+    135deg,
+    #F5F5DC 0%,    /* Beige */
+    #E8DCC4 25%,   /* Sand */
+    #C8E6C9 50%,   /* Light leafy green */
+    #A5D6A7 75%,   /* Soft green */
+    #C8E6C9 100%   /* Light leafy green */
+  );
+  min-height: 100vh;
+  position: relative;
+  overflow-x: hidden;
+}
+
+/* Subtle recycled paper texture */
+body.skills-page::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image: 
+    url("data:image/svg+xml,%3Csvg viewBox='0 0 400 400' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+  opacity: 0.03;
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* Leaf pattern overlay */
+body.skills-page::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-image:
+    radial-gradient(ellipse at 10% 20%, rgba(45, 90, 39, 0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 90% 80%, rgba(74, 124, 89, 0.02) 0%, transparent 40%),
+    radial-gradient(ellipse at 50% 50%, rgba(143, 188, 143, 0.03) 0%, transparent 60%);
+  pointer-events: none;
+  z-index: 0;
+}
+
+/* ============================================
+   PAGE HEADER
+   ============================================ */
+.page-header {
+  text-align: center;
+  padding: 4rem 2rem 2rem;
+  position: relative;
+  z-index: 1;
+}
+
+.page-header .page-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 3rem;
+  font-weight: 700;
+  color: var(--primary-green);
+  margin-bottom: 0.5rem;
+  text-shadow: 0 2px 10px rgba(45, 90, 39, 0.1);
+}
+
+.page-header .page-subtitle {
+  font-size: 1.1rem;
+  color: var(--text-medium);
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* Header decorative leaves */
+.header-leaves {
+  display: flex;
+  justify-content: center;
+  gap: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.header-leaves .leaf {
+  font-size: 1.5rem;
+  animation: float 3s ease-in-out infinite;
+}
+
+.header-leaves .leaf-1 { animation-delay: 0s; }
+.header-leaves .leaf-2 { animation-delay: 0.5s; }
+.header-leaves .leaf-3 { animation-delay: 1s; }
+
+/* ============================================
+   DRIFTING LEAVES ANIMATION
+   ============================================ */
+.drifting-leaves {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.drift-leaf {
+  position: absolute;
+  font-size: 2rem;
+  opacity: 0.15;
+  animation: driftLeaf 15s linear infinite;
+}
+
+.drift-leaf:nth-child(1) { left: 5%; animation-delay: 0s; animation-duration: 18s; }
+.drift-leaf:nth-child(2) { left: 20%; animation-delay: 2s; animation-duration: 20s; }
+.drift-leaf:nth-child(3) { left: 35%; animation-delay: 4s; animation-duration: 16s; }
+.drift-leaf:nth-child(4) { left: 50%; animation-delay: 1s; animation-duration: 22s; }
+.drift-leaf:nth-child(5) { left: 65%; animation-delay: 3s; animation-duration: 19s; }
+
+@keyframes driftLeaf {
+  0% {
+    transform: translateY(100vh) rotate(0deg) scale(0.8);
+    opacity: 0;
+  }
+  10% {
+    opacity: 0.15;
+  }
+  90% {
+    opacity: 0.15;
+  }
+  100% {
+    transform: translateY(-100px) rotate(360deg) scale(1);
+    opacity: 0;
+  }
+}
+
+/* ============================================
+   GLOWING PARTICLES
+   ============================================ */
+.glowing-particles {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 0;
+  overflow: hidden;
+}
+
+.glow-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  background: radial-gradient(circle, rgba(143, 188, 143, 0.8) 0%, rgba(143, 188, 143, 0) 70%);
+  border-radius: 50%;
+  animation: glowFloat 8s ease-in-out infinite;
+}
+
+.glow-particle:nth-child(1) { left: 10%; top: 20%; animation-delay: 0s; }
+.glow-particle:nth-child(2) { left: 30%; top: 60%; animation-delay: 1.5s; }
+.glow-particle:nth-child(3) { left: 50%; top: 30%; animation-delay: 3s; }
+.glow-particle:nth-child(4) { left: 70%; top: 70%; animation-delay: 4.5s; }
+.glow-particle:nth-child(5) { left: 90%; top: 40%; animation-delay: 6s; }
+
+@keyframes glowFloat {
+  0%, 100% {
+    transform: scale(1);
+    opacity: 0.6;
+    box-shadow: 0 0 10px rgba(143, 188, 143, 0.5);
+  }
+  50% {
+    transform: scale(1.5);
+    opacity: 1;
+    box-shadow: 0 0 25px rgba(143, 188, 143, 0.8), 0 0 50px rgba(143, 188, 143, 0.4);
+  }
+}
+
+/* ============================================
+   PARALLAX ECO LAYER
+   ============================================ */
+.parallax-eco-layer {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 200px;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.parallax-eco-layer.hills {
+  background: 
+    radial-gradient(ellipse 80% 50% at 20% 100%, rgba(45, 90, 39, 0.05) 0%, transparent 100%),
+    radial-gradient(ellipse 60% 40% at 50% 100%, rgba(74, 124, 89, 0.04) 0%, transparent 100%),
+    radial-gradient(ellipse 70% 35% at 80% 100%, rgba(45, 90, 39, 0.03) 0%, transparent 100%);
+}
+
+/* ============================================
+   SKILLS INTRO SECTION
+   ============================================ */
+.skills-intro {
+  position: relative;
+  z-index: 1;
+  padding: 2rem 0 3rem;
+}
+
+.intro-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.7) 0%,
+    rgba(245, 245, 220, 0.6) 100%
+  );
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  border-radius: 20px;
+  padding: 2.5rem;
+  border: 1px solid rgba(143, 188, 143, 0.3);
+  box-shadow: 
+    0 8px 32px rgba(45, 90, 39, 0.1),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  max-width: 800px;
+  margin: 0 auto;
+  position: relative;
+  overflow: hidden;
+  animation: fadeInUp 0.6s ease forwards;
+}
+
+.intro-card-decoration {
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 150px;
+  height: 150px;
+  background: radial-gradient(circle, rgba(143, 188, 143, 0.15) 0%, transparent 70%);
+  border-radius: 50%;
+  transform: translate(30%, -30%);
+}
+
+.intro-card-content {
+  position: relative;
+  z-index: 1;
+}
+
+.intro-card-content h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  color: var(--primary-green);
+  margin-bottom: 1rem;
+}
+
+.intro-card-content p {
+  font-size: 1rem;
+  color: var(--text-medium);
+  line-height: 1.8;
+  margin: 0;
+}
+
+/* ============================================
+   SKILLS SECTIONS
+   ============================================ */
+.skills-section {
+  position: relative;
+  z-index: 1;
+  padding: 3rem 0;
+}
+
+.skills-section.alt-bg {
+  background: rgba(255, 255, 255, 0.2);
+  margin: 2rem 0;
+  padding: 3rem 0;
+  border-radius: 20px;
+}
+
+.section-header {
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+
+.section-icon {
+  width: 60px;
+  height: 60px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, var(--light-green) 0%, var(--secondary-green) 100%);
+  border-radius: 16px;
+  margin: 0 auto 1rem;
+  box-shadow: 0 4px 15px rgba(45, 90, 39, 0.2);
+}
+
+.section-icon svg {
+  width: 28px;
+  height: 28px;
+  stroke: white;
+  fill: none;
+}
+
+.section-header h2 {
+  font-family: 'Playfair Display', serif;
+  font-size: 1.75rem;
+  color: var(--primary-green);
+}
+
+/* ============================================
+   PLANT TAGS - Skill Cards with Glassmorphism
+   ============================================ */
+.plant-tags {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+  gap: 1.5rem;
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 0 2rem;
+}
+
+.plant-tag {
+  position: relative;
+  opacity: 0;
+  animation: fadeInUp 0.5s ease forwards;
+}
+
+.plant-tag:nth-child(1) { animation-delay: 0.1s; }
+.plant-tag:nth-child(2) { animation-delay: 0.2s; }
+.plant-tag:nth-child(3) { animation-delay: 0.3s; }
+.plant-tag:nth-child(4) { animation-delay: 0.4s; }
+
+/* String connecting to vine */
+.tag-string {
+  position: absolute;
+  left: 50%;
+  top: -20px;
+  width: 2px;
+  height: 20px;
+  background: linear-gradient(180deg, var(--secondary-green), var(--light-green));
+  transform: translateX(-50%);
+}
+
+/* Glassmorphism card */
+.tag-card {
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.75) 0%,
+    rgba(245, 245, 220, 0.65) 100%
+  );
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border-radius: 16px;
+  padding: 1.5rem;
+  border: 1px solid rgba(143, 188, 143, 0.25);
+  box-shadow: 
+    0 6px 24px rgba(45, 90, 39, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.5);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+}
+
+/* Hover eco icon */
+.hover-eco-icon {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 1.5rem;
+  opacity: 0;
+  transform: scale(0) rotate(-20deg);
+  transition: all 0.3s ease;
+}
+
+.tag-card:hover {
+  transform: translateY(-5px);
+  box-shadow: 
+    0 12px 35px rgba(45, 90, 39, 0.15),
+    0 0 20px rgba(143, 188, 143, 0.2),
+    inset 0 1px 0 rgba(255, 255, 255, 0.6);
+}
+
+.tag-card:hover .hover-eco-icon {
+  opacity: 1;
+  transform: scale(1) rotate(0deg);
+}
+
+/* Tag icon */
+.tag-icon {
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: linear-gradient(135deg, rgba(143, 188, 143, 0.4) 0%, rgba(74, 124, 89, 0.3) 100%);
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.tag-card:hover .tag-icon {
+  transform: scale(1.1);
+  box-shadow: 0 4px 15px rgba(45, 90, 39, 0.3);
+}
+
+.tag-icon svg {
+  width: 28px;
+  height: 28px;
+}
+
+.tag-card h3 {
+  font-family: 'Nunito', sans-serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--text-dark);
+  margin-bottom: 0.75rem;
+}
+
+/* ============================================
+   PROGRESS BAR - Vine/Water Flow Effect
+   ============================================ */
+.tag-progress {
+  height: 8px;
+  background: rgba(143, 188, 143, 0.2);
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 0.5rem;
+  position: relative;
+}
+
+.progress-bar {
+  height: 100%;
+  border-radius: 10px;
+  background: linear-gradient(
+    90deg,
+    var(--secondary-green) 0%,
+    var(--light-green) 50%,
+    #A5D6A7 100%
+  );
+  position: relative;
+  width: 0;
+  animation: fillProgress 1.5s ease forwards;
+  animation-delay: 0.5s;
+}
+
+/* Vine pattern overlay on progress bar */
+.progress-bar::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: repeating-linear-gradient(
+    90deg,
+    transparent 0px,
+    transparent 8px,
+    rgba(255, 255, 255, 0.3) 8px,
+    rgba(255, 255, 255, 0.3) 10px
+  );
+  border-radius: 10px;
+}
+
+/* Water droplet effect at the end */
+.progress-bar::before {
+  content: '';
+  position: absolute;
+  right: -6px;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 14px;
+  height: 14px;
+  background: radial-gradient(circle at 30% 30%, #ffffff, var(--light-green));
+  border-radius: 50%;
+  box-shadow: 0 2px 6px rgba(45, 90, 39, 0.3);
+}
+
+@keyframes fillProgress {
+  from {
+    width: 0;
+  }
+  to {
+    width: var(--progress);
+  }
+}
+
+.tag-level {
+  font-family: 'Nunito', sans-serif;
+  font-size: 0.85rem;
+  font-weight: 600;
+  color: var(--text-light);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* ============================================
+   ANIMATIONS
+   ============================================ */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-8px); }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Scroll-triggered animation */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ============================================
+   RESPONSIVE DESIGN
+   ============================================ */
+@media (max-width: 768px) {
+  .page-header {
+    padding: 3rem 1rem 1.5rem;
+  }
+  
+  .page-header .page-title {
+    font-size: 2rem;
+  }
+  
+  .page-header .page-subtitle {
+    font-size: 1rem;
+  }
+  
+  .plant-tags {
+    grid-template-columns: 1fr;
+    padding: 0 1rem;
+  }
+  
+  .intro-card {
+    margin: 0 1rem;
+    padding: 1.5rem;
+  }
+  
+  .section-header {
+    margin-bottom: 1.5rem;
+  }
+  
+  .tag-card {
+    padding: 1.25rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .page-header .page-title {
+    font-size: 1.75rem;
+  }
+  
+  .section-icon {
+    width: 50px;
+    height: 50px;
+  }
+  
+  .section-icon svg {
+    width: 24px;
+    height: 24px;
+  }
+  
+  .section-header h2 {
+    font-size: 1.4rem;
+  }
+}
+
