@@ -246,4 +246,3 @@ function setActiveNavLink() {
 
 // Run on load
 setActiveNavLink();
-

@@ -816,6 +816,14 @@ body.home-page::after {
   filter: drop-shadow(0 2px 4px rgba(45, 90, 39, 0.3));
 }
 
+@media (max-width: 900px) {
+  .scroll-indicator {
+    position: static;
+    transform: none;
+    margin-top: 2rem;
+  }
+}
+
 @keyframes bounceLeaf {
   0%, 100% { 
     transform: translateY(0) rotate(-5deg);
@@ -1255,4 +1263,3 @@ body.home-page::after {
     height: 120px;
   }
 }
-
